@@ -20,28 +20,28 @@ def search(path, walls, start, end, square, color="green", bfs=False, dfs=False)
         elif dfs:
             x, y = frontier.pop()
 
-        if (x - 24, y) in path and (x - 24, y) not in visited:  # check the cell on the left
+        if (x - 24, y) in path and (x - 24, y) not in visited:  
             cell = (x - 24, y)
             if bfs:
                 solution[cell] = x, y
-            frontier.append(cell)  # add cell to frontier list
-            visited.add((x - 24, y))  # add cell to visited list
+            frontier.append(cell) 
+            visited.add((x - 24, y))  
 
-        if (x, y - 24) in path and (x, y - 24) not in visited:  # check the cell down
+        if (x, y - 24) in path and (x, y - 24) not in visited:  
             cell = (x, y - 24)
             if bfs:
                 solution[cell] = x, y
             frontier.append(cell)
             visited.add((x, y - 24))
 
-        if (x + 24, y) in path and (x + 24, y) not in visited:  # check the cell on the  right
+        if (x + 24, y) in path and (x + 24, y) not in visited: 
             cell = (x + 24, y)
             if bfs:
                 solution[cell] = x, y
             frontier.append(cell)
             visited.add((x + 24, y))
 
-        if (x, y + 24) in path and (x, y + 24) not in visited:  # check the cell up
+        if (x, y + 24) in path and (x, y + 24) not in visited:  
             cell = (x, y + 24)
             if bfs:
                 solution[cell] = x, y
@@ -63,11 +63,11 @@ def backRoute(s_x, s_y, e_x,e_y,square,color = "yellow"):
         print('found!')
         x, y = e_x, e_y
         square.color(color)
-        square.goto(solution[x, y])  # move the yellow sprite to the key value of solution ()
+        square.goto(solution[x, y])  
         square.stamp()
-        while not (x, y) == (s_x, s_y):    # stop loop when current cells == start cell
-            x, y = solution[x, y]               # "key value" now becomes the new key
-            square.goto(solution[x, y])  # move the yellow sprite to the key value of solution ()
+        while not (x, y) == (s_x, s_y):   
+            x, y = solution[x, y]               
+            square.goto(solution[x, y])  
             square.stamp()
 
     return True if found else False
